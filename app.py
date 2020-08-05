@@ -23,17 +23,12 @@ def index():
 def add_movie():
   movie = request.get_json()
   movies.append(movie)
-  return {'id': len(movies)-1}, 200
+  return {'id': len(movies)-1}, 200 
 
 @app.route('/movies/<int:index>', methods=['PUT'])
 def update_movie(index):
   movie = request.get_json()
   movies[index] = movie
   return jsonify(movies[index]), 200
-
-@app.route('/movies/<int:index>', methods=['DELETE'])
-def delete_movie(index):
-  movies.pop(index)
-  return 'None', 200  
 
 app.run()
