@@ -31,4 +31,9 @@ def update_movie(index):
   movies[index] = movie
   return jsonify(movies[index]), 200
 
+@app.route('/movies/<int:index>', methods=['DELETE'])
+def delete_movie(index):
+  movies.pop(index)
+  return 'None', 200 
+
 app.run()
