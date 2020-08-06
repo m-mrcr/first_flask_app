@@ -13,7 +13,11 @@ def get_movies():
   movies = Movie.objects().to_json()
   return Response(movies, mimetype='application/json', status=200)
 
-
+@app.route('/movies', methods=['POST'])
+  body = request.get_json()
+  movie = Movie(**body).save()
+  id = movie.id
+  return {'id': str(id)}, 200
 
 
 
