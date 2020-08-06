@@ -19,7 +19,11 @@ def get_movies():
   id = movie.id
   return {'id': str(id)}, 200
 
-
+@app.route('/movies/<id>', methods=['PUT'])
+def update_movie(id):
+  body = request.get_json()
+  Movie.objects.get(id=id).update(**body)
+  return '', 200
 
 
 
