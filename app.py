@@ -4,7 +4,9 @@ from database.models import Movie
 
 app = Flask(__name__)
 
-
+app.config['MONGODB_SETTINGS'] = {
+  'host': 'mongodb://localhost/movie-bag'
+}
 
 
 
