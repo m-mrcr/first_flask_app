@@ -8,7 +8,10 @@ app.config['MONGODB_SETTINGS'] = {
   'host': 'mongodb://localhost/movie-bag'
 }
 
-
+@app.route('/movies')
+def get_movies():
+  movies = Movie.objects().to_json()
+  return Response(movies, mimetype='application/json', status=200)
 
 
 
